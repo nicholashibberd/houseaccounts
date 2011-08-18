@@ -16,6 +16,14 @@ class GroupsController < ApplicationController
   def index
   end
   
+  def join
+    @user = User.find(params[:user_id])
+  end
+  
+  def add
+    @user = User.find(params[:user_id])
+  end
+  
   def join_new_group
     group = Group.find_by_group_token(params[:group_token])
     group.add_member(params[:member_name], current_user.id)

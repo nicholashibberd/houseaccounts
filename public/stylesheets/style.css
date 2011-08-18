@@ -438,6 +438,16 @@ Users
 	height: 70px;
 }
 
+#join_group_button {
+	float: left;
+	margin-right: 20px;
+}
+
+#add_group_buttons {
+	margin-top: 50px;
+}
+
+
 /*
 ***************************************************
 Group dropdown

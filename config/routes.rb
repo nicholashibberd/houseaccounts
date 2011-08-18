@@ -3,6 +3,7 @@ Houseaccounts::Application.routes.draw do
   resources :groups do
     collection do 
       post :add_new_group, :join_new_group
+      get :join, :add
     end
   end
   resources :members do
