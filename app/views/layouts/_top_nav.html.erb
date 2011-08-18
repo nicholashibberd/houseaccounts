@@ -1,0 +1,6 @@
+<div id="top_nav">
+	<%= home_top_nav_link(current_user) %>
+	<% current_user.groups.each do |group| %>
+		<%= group_top_nav_link(group) %>
+	<% end %>
+</div>

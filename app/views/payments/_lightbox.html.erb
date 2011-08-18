@@ -1,0 +1,53 @@
+<div class="hidden">
+	<div id="quick_payment">
+		<h1>Quick payment</h1>
+		<% form_for @payment do |f| -%>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.hidden_field :member_id, :value => params[:id] %>
+			<div class="field">
+				<div>
+					<%= f.label :amount %>
+				</div>
+				<div>
+					<%= f.text_field :amount %>
+				</div>
+			</div>
+			<div class="field">
+				<div>
+					<%= f.label :description %>
+				</div>
+				<div>
+					<%= f.text_field :description %>
+				</div>
+			</div>
+			<div class="field">
+				<div>
+					<%= f.label :date %>
+				</div>
+				<div>
+					<%= f.text_field :date, :value => Date.today %>
+				</div>
+			</div>
+			<div class="field">
+				<div>
+					<%= f.label :paid_by %>
+				</div>
+				<div>
+					<%= f.select :member_id, options_from_collection_for_select(@group.members, 'id', 'name', params[:member_id]) %>
+				</div>
+			</div>
+			<div class="field">
+				<% @group.members.each do |member| %>
+					<div>
+					<%= label_tag member.name %>
+					<%= check_box_tag "payment[liable_member_ids][]", member.id %>
+					</div>
+				<% end %>
+			</div>
+			<div>
+				<%= f.submit 'Add payment' %>
+			</div>
+
+		<% end -%>
+	</div>
+</div>

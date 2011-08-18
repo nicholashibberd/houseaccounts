@@ -1,0 +1,63 @@
+<%= content_for :head do %>
+<%= javascript_include_tag 'datepicker' %>
+<%= stylesheet_link_tag 'cupertino/jquery-ui.css' %>
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({dateFormat: 'DD d MM yy', firstDay: 1});
+	});
+</script>
+<% end %>
+
+<h1>Quick payment</h1>
+<%= form_for [@member, @payment] do |f| -%>
+	<%= f.hidden_field :member_id, :value => @member.id %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<div class="field">
+		<div>
+			<%= f.label :amount %>
+		</div>
+		<div id="amount_field">
+			<%= f.text_field :amount_parse, :value => display_price_for_form(@payment.amount) %>
+			<div id="pound_sign">&pound;</div>
+		</div>
+	</div>
+	<div class="field">
+		<div>
+			<%= f.label :description %>
+		</div>
+		<div>
+			<%= f.text_field :description %>
+		</div>
+	</div>
+	<div class="field">
+		<div>
+			<%= f.label :date %>
+		</div>
+		<div>
+			<%= f.text_field :date, :value => (l (@payment.date ||= Date.today), :format => :long), :id => 'datepicker' %>
+		</div>
+	</div>
+	<div class="field" id="group_field">
+		<div>
+			<%= f.label 'Who owes?' %>
+		</div>
+		<div id="quick_payment_groups">
+			<% @member.group.members.each do |member| %>
+				<div class="quick_payment_liable_member">
+					<div class="quick_payment_liable_member_input">
+						<%= check_box_tag "payment[liable_member_ids][]", member.id, @payment.liable_members.include?(member) %>
+					</div>
+					<div class="quick_payment_liable_member_name">
+						<%= label_tag member.name %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		</div>
+		
+	</div>
+	<div id="payment_submit">
+		<%= f.submit 'Save payment' %>
+	</div>
+  
+<% end -%>

@@ -1,0 +1,77 @@
+<% if @member.errors.any? %>  
+	<div id="errorExplanation">  
+    <ul>
+    <% @member.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+<% end %>
+
+<div class="member_section">
+	<div id="group_dropdown">
+	  <%= @member.name.titleize %>
+		<div id="group_dropdown_arrow">
+			<%= image_tag 'backgrounds/group_dropdown_arrow.gif' %>
+		</div>
+	</div>
+	<div id="group_dropdown_hidden">
+		<%= link_to 'Overview', group_path(@group) %>
+		<% @group.members.each do |member| %>
+			<%= link_to member.name.titleize, member_path(member) %>
+		<% end %>
+	</div>
+</div>
+
+<div class="section">
+	<h2><%= "#{@member.name.titleize}'s Summary" %></h2>
+	<div class="subsection">
+		<div class="subsection_buttons button confirm_button">
+			<%#= link_to 'New payment', '#quick_payment', :rel => 'facebox' %>
+			<%= link_to 'New payment', new_member_payment_path(@member, :group_id => @member.group.id), :rel => 'facebox' %>
+		</div>
+	<% @member.other_members.each do |other_member| %>
+		<div class="member_summary">
+			<%= summary_for_member(@member, other_member) %>
+		</div>
+	<% end %>
+	</div>
+</div>
+
+
+<% last_10_payments(@member) do %>
+<div class="section" id="member_last_10_payments">
+	<h2>Last 10 payments</h2>
+	<div class="subsection">
+		<table>
+			<tr>
+				<th></th>
+				<th></th>
+				<% @member.group.members.each do |member| %>
+					<th><%= member.name.titleize %></th>
+				<% end %>
+				<th></th>
+			</tr>
+			
+			<% @member.last_10_payments.each do |payment| %>
+				<tr>
+					<td class="payment_amount"><%= display_balance(payment.amount) %></td>
+					<td  class="payment_description">
+						<div>
+						<%= payment.description %>
+						</div>
+						<div class="payment_date">
+							<%= l payment.date, :format => :short %>
+						</div>
+					</td>
+					<% @member.group.members.each do |member| %>
+						<td class="liable_member"><%= display_balance(member.liability_for_payment(payment)) %></td>
+					<% end %>
+					<td><%= link_to 'Edit', edit_member_payment_path(@member, payment), :rel => 'facebox' %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+<% end %>
+

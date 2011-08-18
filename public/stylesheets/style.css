@@ -1,0 +1,481 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#background {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+}
+
+#background_header {
+	height: 200px;
+	background: -webkit-linear-gradient(top,  #487DC8,  #1C3F6F);
+	background: -moz-linear-gradient(top,  #487DC8,  #1C3F6F);
+	border-bottom: 1px solid #fff;
+}
+
+#background_content {
+	height: 100px;
+	background: -webkit-linear-gradient(top,  #FBFCE9,  #E7E7BC);
+	background: -moz-linear-gradient(top,  #FBFCE9,  #E7E7BC);
+}
+
+/*
+***************************************************
+Layout
+***************************************************
+*/
+
+body {
+	background-color: #E7E7BC;
+	color: #333;
+}
+
+body, input {
+	font-family: 'Delius', Arial;
+	font-family: 'Lucida Grande', Arial;
+	text-shadow: white 0px -1px 0px;
+}
+
+#wrapper {
+	margin: auto;
+	width: 990px;
+}
+
+#content_wrapper {
+	padding: 15px;
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+#content {
+	background: #eee;
+	padding: 30px;
+	position: relative;
+}
+
+.subsection {
+	background-color: #fff;
+	padding: 30px;
+	position: relative;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+.section {
+	margin-bottom: 40px;
+}
+
+.hidden {
+	display: none;
+}
+
+/* 
+************************************************************
+Flash
+************************************************************
+*/
+
+#flash {
+	background: red;
+	background: -webkit-gradient(top,  #D05A5B,  #CC0000);
+	background: -moz-linear-gradient(top,  #D05A5B,  #CC0000);
+	padding: 15px 35px;
+	color: white;
+	text-shadow: none;
+	margin-bottom: 20px;
+}
+
+.flash_item {
+	margin-bottom: 5px;
+}
+
+
+
+/*
+***************************************************
+Common Elements
+***************************************************
+*/
+
+h1 {
+	color: #1F5F8B;
+	margin-bottom: 20px;
+}
+
+h2 {
+	color: #1F5F8B;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+a, a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+/*
+***************************************************
+Inputs and Buttons
+***************************************************
+*/
+
+input[type=text], input[type=password] {
+	background: url(/images/backgrounds/input.jpg);
+	border: 1px solid #999;
+	border-radius: 3px;
+	width: 314px;
+	height: 36px;
+	font-size: 16px;
+	padding: 8px 15px;
+}
+
+input[type=submit] {
+	padding: 10px 20px;
+	background: -webkit-linear-gradient(top,  #79B979,  #339933);
+	background: -moz-linear-gradient(top,  #79B979,  #339933);
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 13px;
+	cursor: pointer;
+	text-shadow: none;
+}
+
+.field {
+	margin-bottom: 10px;
+}
+
+.subsection_buttons {
+	position: absolute;
+	right: 20px;
+	top: 30px;
+	text-align: right;
+}
+
+.button {
+	margin-bottom: 30px;
+	text-shadow: none;
+}
+
+.button a {
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 3px;
+	font-size: 13px;
+}
+
+.edit_button a {
+	background-color: #CC6600;
+	background: -webkit-linear-gradient(top,  #FAA94A,  #CC6600);
+	background: -moz-linear-gradient(top,  #FAA94A,  #CC6600);
+}
+
+.confirm_button a {
+	background-color: #339933;
+	background: -webkit-linear-gradient(top,  #79B979,  #339933);
+	background: -moz-linear-gradient(top,  #79B979,  #339933);
+}
+
+.delete_button a {
+	background-color: #CC0000;
+	background: -webkit-linear-gradient(top,  #F76D6C,  #CC0000);
+	background: -moz-linear-gradient(top,  #F76D6C,  #CC0000);
+}
+
+#join_new_group_button {
+	margin-top: 15px;
+}
+
+#create_new_group_button {
+	margin-top: 15px;
+}
+
+#new_user_signup {
+	position: absolute;
+	bottom: 37px;
+	left: 130px;
+}
+
+/*
+***************************************************
+Header
+***************************************************
+*/
+
+#header {
+	position: relative;
+	color: #E7E7BC;
+	height: 160px;
+}
+
+#logo {
+	font-size: 40px;
+	font-weight: bold;
+	padding-top: 50px;
+}
+
+#signout_link {
+	position: absolute;
+	top: 20px;
+	right: 0px;
+	text-shadow: none;
+}
+
+/*
+***************************************************
+Top Nav
+***************************************************
+*/
+
+#top_nav {
+	margin-top: 20px;
+	padding-left: 20px;
+	text-shadow: none;
+}
+
+#top_nav a {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding: 10px 20px;
+	font-size: 20px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+#top_nav a.selected {
+	background-color: #fff;
+	color: #1F5F8B;
+}
+
+/*
+***************************************************
+Quick Payment
+***************************************************
+*/
+
+#quick_payment_groups_hidden {
+	display: none;
+}
+
+#group_select {
+	margin-bottom: 20px;
+}
+
+#quick_payment_groups {
+	background-color: #eee;
+	padding: 20px;
+	width: 305px;
+}
+
+#payment_submit {
+	margin-top: 10px;
+}
+
+.quick_payment_liable_member {
+	margin-bottom: 10px;
+}
+
+.quick_payment_liable_member_input {
+	float: left;
+	width: 30px;
+	vertical-align: center;
+}
+
+.quick_payment_liable_member_name {
+	margin-left: 30px;
+	padding-top: 2px;
+}
+
+#amount_field {
+	position: relative;
+}
+
+#amount_field input {
+	padding-left: 33px;
+	width: 296px;
+}
+
+#pound_sign {
+	position: absolute;
+	top: 17px;
+	left: 20px;
+}
+
+/*
+***************************************************
+Groups
+***************************************************
+*/
+
+#group_top_nav {
+	background-color: #fff;
+	padding: 10px 0 20px 0;
+	height: 20px;
+	margin: -30px 0 30px -30px;
+	width: 960px;
+	font-size: 20px;
+}
+
+#group_top_nav a {
+	display: block;
+	float: left;
+	padding: 10px 20px;
+}
+
+#group_top_nav a.selected {
+	background-color: #eee;
+	border-radius: 3px;	
+}
+
+.edit_group_member {
+	font-size: 20px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+#group_edit_group_button {
+	float: left;
+	margin-right: 20px;
+}
+
+#group_edit_buttons {
+	margin-top: 50px;
+}
+
+/*
+***************************************************
+Members
+***************************************************
+*/
+
+.member_section {
+	margin-bottom: 20px;
+}
+
+#member_new_payment .subsection {
+	height: 100px;
+}
+
+#member_new_payment_input_fields {
+	height: 100px;
+}
+
+#member_new_payment_submit {
+	text-align: right;
+}
+
+#member_new_payment_amount, #member_new_payment_description, .member_new_payment_liable_member {
+	float: left;
+	margin-right: 20px;
+}
+
+#member_new_payment_amount input {
+	width: 100px;
+}
+
+#member_new_payment_description input {
+	width: 200px;
+}
+
+.member_new_payment_liable_member {
+	text-align: center;
+}
+
+.member_new_payment_liable_member_check_box {
+	padding-top: 15px;
+}
+
+#member_last_10_payments table {
+	width: 100%;
+}
+
+#member_last_10_payments td, th {
+	vertical-align: top;
+	padding: 5px 0;
+}
+
+#member_last_10_payments .payment {
+	height: 40px;
+}
+
+#member_last_10_payments td.payment_amount {
+	width: 100px;
+}
+
+#member_last_10_payments td.payment_description {
+	width: 200px;
+}
+
+#member_last_10_payments td.liable_member {
+	text-align: center;
+}
+
+#member_last_10_payments .payment_date {
+	color: #999;
+	font-size: 13px;
+}
+
+.member_summary {
+	margin-bottom: 10px;
+}
+
+/*
+***************************************************
+Users
+***************************************************
+*/
+
+.users_subsection {
+	min-height: 70px;
+}
+
+* html .users_subsection {
+	height: 70px;
+}
+
+/*
+***************************************************
+Group dropdown
+***************************************************
+*/
+
+#group_dropdown {
+	cursor: pointer;
+	font-size: 20px;
+	padding: 10px 20px;
+	background: -webkit-linear-gradient(top,  #FFF,  #d8d8d8);
+	background: -moz-linear-gradient(top,  #FFF,  #d8d8d8);
+	border: 1px solid #d8d8d8;
+	width: 200px;
+	color: #1F5F8B;
+	position: relative;
+}
+
+#group_dropdown_hidden {
+	background: -webkit-linear-gradient(top,  #FFF,  #d8d8d8);
+	background: -moz-linear-gradient(top,  #FFF,  #d8d8d8);
+	border: 1px solid #d8d8d8;
+	width: 240px;
+}
+
+#group_dropdown_hidden a {
+	display: block;
+	width: 200px;
+	padding: 10px 20px;	
+	color: #1F5F8B;	
+}
+
+#group_dropdown_hidden a:hover {
+	background-color: #ccc;
+}
+
+#group_dropdown_arrow {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+}

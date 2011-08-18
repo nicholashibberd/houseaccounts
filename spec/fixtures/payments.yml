@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: Payment1
+  amount: 
+  member_id: 1
+  group_id: 1
+  date: 2011-07-31
+
+two:
+  description: Payment2
+  amount: 1
+  member_id: 1
+  group_id: 1
+  date: 2011-07-31

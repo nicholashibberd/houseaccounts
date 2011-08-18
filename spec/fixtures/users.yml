@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Adam
+  email: adam@hotmail.com
+  encrypted_password: MyString
+  salt: MyString
+  remember_token: MyString
+
+two:
+  name: Nick
+  email: nick@hotmail.com
+  encrypted_password: MyString
+  salt: MyString
+  remember_token: MyString

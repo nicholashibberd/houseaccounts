@@ -1,0 +1,42 @@
+<div class="member_section">
+	<div id="group_dropdown">
+	  Overview
+		<div id="group_dropdown_arrow">
+			<%= image_tag 'backgrounds/group_dropdown_arrow.gif' %>
+		</div>
+	</div>
+	<div id="group_dropdown_hidden">
+		<% @group.members.each do |member| %>
+			<%= link_to member.name.titleize, member_path(member) %>
+		<% end %>
+	</div>
+</div>
+
+<% group_members(@group) do %>
+	<% @group.members.each do |member| %>
+		<div class="member_section">
+			<h2><%= link_to member.name.titleize, member_path(member) %></h2>
+			<div class="subsection">
+				<div class="subsection_buttons">
+					<div class="button confirm_button">
+					<%= link_to 'View', member_path(member) %>
+					</div>
+				</div>
+				<% member.other_members.each do |other_member| %>
+					<div>
+					<%= summary_for_member(member, other_member) %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+
+<div id="group_edit_buttons">
+	<div class="edit_button button" id="group_edit_group_button">
+		<%= link_to 'Add or remove members', edit_group_path(@group) %>
+	</div>
+	<div class="delete_button button">
+	<%= link_to 'Quit this group', group_path(@group) %>
+	</div>
+</div>
