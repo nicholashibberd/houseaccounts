@@ -1,3 +1,7 @@
+<%= content_for :head do %>
+	<link rel="prerender" href="<%= new_member_payment_path(@member, :group_id => @member.group.id) %>">
+<% end %>
+
 <% if @member.errors.any? %>  
 	<div id="errorExplanation">  
     <ul>

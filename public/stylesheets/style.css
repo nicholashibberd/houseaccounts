@@ -11,14 +11,14 @@
 
 #background_header {
 	height: 200px;
-	background: -webkit-linear-gradient(top,  #487DC8,  #1C3F6F);
+	background: -webkit-gradient(linear, left top, left bottom, from(#487DC8), to(#1C3F6F));
 	background: -moz-linear-gradient(top,  #487DC8,  #1C3F6F);
 	border-bottom: 1px solid #fff;
 }
 
 #background_content {
 	height: 100px;
-	background: -webkit-linear-gradient(top,  #FBFCE9,  #E7E7BC);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FBFCE9), to(#E7E7BC));
 	background: -moz-linear-gradient(top,  #FBFCE9,  #E7E7BC);
 }
 
@@ -80,7 +80,7 @@ Flash
 
 #flash {
 	background: red;
-	background: -webkit-gradient(top,  #D05A5B,  #CC0000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#D05A5B), to(#CC0000));
 	background: -moz-linear-gradient(top,  #D05A5B,  #CC0000);
 	padding: 15px 35px;
 	color: white;
@@ -135,7 +135,7 @@ input[type=text], input[type=password] {
 
 input[type=submit] {
 	padding: 10px 20px;
-	background: -webkit-linear-gradient(top,  #79B979,  #339933);
+	background: -webkit-gradient(linear, left top, left bottom, from(#79B979), to(#339933));
 	background: -moz-linear-gradient(top,  #79B979,  #339933);
 	border: none;
 	border-radius: 3px;
@@ -170,19 +170,19 @@ input[type=submit] {
 
 .edit_button a {
 	background-color: #CC6600;
-	background: -webkit-linear-gradient(top,  #FAA94A,  #CC6600);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FAA94A), to(#CC6600));
 	background: -moz-linear-gradient(top,  #FAA94A,  #CC6600);
 }
 
 .confirm_button a {
 	background-color: #339933;
-	background: -webkit-linear-gradient(top,  #79B979,  #339933);
+	background: -webkit-gradient(linear, left top, left bottom, from(#79B979), to(#339933));
 	background: -moz-linear-gradient(top,  #79B979,  #339933);
 }
 
 .delete_button a {
 	background-color: #CC0000;
-	background: -webkit-linear-gradient(top,  #F76D6C,  #CC0000);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F76D6C), to(#CC0000));
 	background: -moz-linear-gradient(top,  #F76D6C,  #CC0000);
 }
 
@@ -458,7 +458,7 @@ Group dropdown
 	cursor: pointer;
 	font-size: 20px;
 	padding: 10px 20px;
-	background: -webkit-linear-gradient(top,  #FFF,  #d8d8d8);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#d8d8d8));
 	background: -moz-linear-gradient(top,  #FFF,  #d8d8d8);
 	border: 1px solid #d8d8d8;
 	width: 200px;
@@ -467,7 +467,7 @@ Group dropdown
 }
 
 #group_dropdown_hidden {
-	background: -webkit-linear-gradient(top,  #FFF,  #d8d8d8);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#d8d8d8));
 	background: -moz-linear-gradient(top,  #FFF,  #d8d8d8);
 	border: 1px solid #d8d8d8;
 	width: 240px;
