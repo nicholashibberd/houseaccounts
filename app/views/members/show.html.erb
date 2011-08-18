@@ -31,8 +31,8 @@
 	<h2><%= "#{@member.name.titleize}'s Summary" %></h2>
 	<div class="subsection">
 		<div class="subsection_buttons button confirm_button">
-			<%#= link_to 'New payment', '#quick_payment', :rel => 'facebox' %>
-			<%= link_to 'New payment', new_member_payment_path(@member, :group_id => @member.group.id), :rel => 'facebox' %>
+			<%#= link_to 'New payment', new_member_payment_path(@member, :group_id => @member.group.id), :rel => 'facebox' %>
+			<%= link_to 'New payment', new_member_payment_path(@member, :group_id => @member.group.id) %>
 		</div>
 	<% @member.other_members.each do |other_member| %>
 		<div class="member_summary">
@@ -71,7 +71,10 @@
 					<% @member.group.members.each do |member| %>
 						<td class="liable_member"><%= display_balance(member.liability_for_payment(payment)) %></td>
 					<% end %>
-					<td><%= link_to 'Edit', edit_member_payment_path(@member, payment), :rel => 'facebox' %></td>
+					<td>
+					<%= link_to 'Edit', edit_member_payment_path(@member, payment) %>
+					<%#= link_to 'Edit', edit_member_payment_path(@member, payment), :rel => 'facebox' %>
+						</td>
 				</tr>
 			<% end %>
 		</table>

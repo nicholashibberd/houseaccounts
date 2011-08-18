@@ -200,6 +200,20 @@ input[type=submit] {
 	left: 130px;
 }
 
+#edit_payment_form {
+	position: relative;
+}
+
+#edit_payment_delete_button {
+	position: absolute;
+	bottom: 10px;
+	left: 150px;
+	margin-bottom: 0px;
+}
+
+#edit_payment_delete_button a{
+	padding: 11px 20px;
+}
 /*
 ***************************************************
 Header

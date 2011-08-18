@@ -22,9 +22,15 @@
 		</div>
 		<div id="content_wrapper">
 			<div id="content">
-			<% flash.each do |key, value| %> 
-				<div class="flash <%= key %>"><%= value %></div>
-			<% end %>
+				<% if !flash.blank? %>
+					<div id="flash">
+						<ul>
+						<% flash.each do |key, value| %> 
+							<li class="flash_item <%= key %>"><%= value %></li>
+						<% end %>
+						</ul>
+					</div>
+				<% end %>
 			<%= yield %>
 			</div>
 		</div>

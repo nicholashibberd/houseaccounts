@@ -27,9 +27,9 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @user.errors.each do |error, message|
-        flash[:error] = "#{error} #{message}".titleize
+        flash_display(error, message)
       end
-      render 'new'
+      redirect_to new_user_path
     end
   end
   

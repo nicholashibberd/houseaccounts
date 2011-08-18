@@ -8,7 +8,7 @@
 </script>
 <% end %>
 
-<h1>Quick payment</h1>
+<h1><%= @heading %></h1>
 <%= form_for [@member, @payment] do |f| -%>
 	<%= f.hidden_field :member_id, :value => @member.id %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
@@ -52,7 +52,6 @@
 					</div>
 				</div>
 			<% end %>
-		</div>
 		</div>
 		
 	</div>

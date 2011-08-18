@@ -28,11 +28,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def flash_display(error)
+  def flash_display(error, message)
     case error
       when :liable_member_ids then flash[:liable_members] = 'Please add some other members for this payment'
       when :amount then flash[:amount] = 'Please enter an amount for this payment'
-      when :description then flash[:description] = 'Please leave a description for this payment'  
+      when :description then flash[:description] = 'Please leave a description for this payment'
+      when :password then flash[:password] = "#{error.to_s.titleize} #{message}"
+      when :email then flash[:email] = "#{error.to_s.titleize} #{message}"  
+      when :name then flash[:name] = "#{error.to_s.titleize} #{message}"
     end
   end
   

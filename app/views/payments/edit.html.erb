@@ -1,4 +1,6 @@
-<%= render 'form' %>
-<div class'button delete_button'>
-	<%= link_to 'Delete', member_payment_path(@member, @payment), :method => :delete %>
+<div id="edit_payment_form">
+	<%= render 'form' %>
+	<div class='button delete_button' id='edit_payment_delete_button'>
+		<%= link_to 'Delete payment', member_payment_path(@member, @payment), :method => :delete %>
+	</div>
 </div>

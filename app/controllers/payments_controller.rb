@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  layout 'blank'
+  #layout 'blank'
   def create
     member = Member.find(params[:payment][:member_id])
     @payment = Payment.new(params[:payment])
@@ -7,12 +7,9 @@ class PaymentsController < ApplicationController
     if @payment.save
       redirect_to member_path(member)
     else
-      #flash_display(@payment.errors) if @payment.errors
       @payment.errors.each do |error, message|
-        flash_display(error)
+        flash_display(error, message)
       end
-        #flash[error] = "#{error} #{message}".titleize
-      #end
       redirect_to member_path(member)
     end
   end
@@ -24,12 +21,9 @@ class PaymentsController < ApplicationController
     if @payment.save
       redirect_to member_path(member)
     else
-      #flash_display(@payment.errors) if @payment.errors
       @payment.errors.each do |error, message|
-        flash_display(error)
+        flash_display(error, message)
       end
-        #flash[error] = "#{error} #{message}".titleize
-      #end
       redirect_to member_path(member)
     end
   end
@@ -37,11 +31,13 @@ class PaymentsController < ApplicationController
   def new
     @member = Member.find(params[:member_id])
     @payment = @member.payments.build
+    @heading = 'New Payment'
   end
   
   def edit
     @member = Member.find(params[:member_id])
     @payment = Payment.find(params[:id])
+    @heading = 'Edit Payment'    
   end
   
   def destroy

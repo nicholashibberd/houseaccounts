@@ -9,7 +9,7 @@
 						<%= link_to 'Edit this group', edit_group_path(group) %>
 						</div>
 						<div class="button confirm_button">
-						<%= link_to 'New payment', new_member_payment_path(group.get_member(@user), :group_id => group.id), :rel => 'facebox' %>
+						<%= link_to 'New payment', new_member_payment_path(group.get_member(@user), :group_id => group.id) %>
 						</div>
 					</div>
 					<% user_group_summary(group) do %>
