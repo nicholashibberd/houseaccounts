@@ -20,10 +20,8 @@
 			<div id="logo">
 				House Accounts
 			</div>
-			<div id="signout_link">
-				<%= current_user.name %> : <%= link_to 'Sign out', signout_path %>
-			</div>
-			<%= render 'layouts/top_nav' %>
+			<%= user_status(current_user) %>
+			<%= render 'layouts/top_nav' if current_user %>
 		</div>
 		<div id="content_wrapper">
 			<div id="content">

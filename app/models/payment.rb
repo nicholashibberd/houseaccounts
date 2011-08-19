@@ -31,7 +31,7 @@ class Payment < ActiveRecord::Base
   end
   
   def spend_per_liable_member
-    amount / liable_members.size
+    BigDecimal(amount) / liable_members.size
   end
   
   def amount_parse=(amount)

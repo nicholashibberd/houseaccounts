@@ -2,14 +2,11 @@
 	<% user_groups(@user) do %>
 		<% @user.groups.each do |group| %>
 			<div class="group">
-				<h2><%= group.name %></h2>
+				<h2><%= link_to group.name, group_path(group) %></h2>
 				<div class="subsection users_subsection">
 					<div class="subsection_buttons">
-						<div class="button edit_button">
-						<%= link_to 'Edit this group', edit_group_path(group) %>
-						</div>
 						<div class="button confirm_button">
-						<%= link_to 'New payment', new_member_payment_path(group.get_member(@user), :group_id => group.id) %>
+						<%= link_to 'New payment', new_member_payment_path(group.get_member(@user)) %>
 						</div>
 					</div>
 					<% user_group_summary(group) do %>

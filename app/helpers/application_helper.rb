@@ -25,4 +25,12 @@ module ApplicationHelper
     end
   end
   
+  def user_status(user)
+    if user
+      content_tag(:div, (link_to "#{current_user.name}: Sign out", signout_path), :id => 'signout_link')
+    else
+      content_tag(:div, (link_to "Sign in", signin_path), :id => 'signout_link')
+    end
+  end
+  
 end

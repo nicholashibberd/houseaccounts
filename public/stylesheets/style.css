@@ -117,6 +117,10 @@ a, a:visited {
 	color: inherit;
 }
 
+.strong {
+	font-weight: bold;
+}
+
 /*
 ***************************************************
 Inputs and Buttons
@@ -281,9 +285,10 @@ Quick Payment
 }
 
 #quick_payment_groups {
-	background-color: #eee;
+	background-color: #fff;
 	padding: 20px;
 	width: 305px;
+	margin-top: 5px;
 }
 
 #payment_submit {
@@ -359,6 +364,17 @@ Groups
 
 #group_edit_buttons {
 	margin-top: 50px;
+}
+
+#add_new_member_panel {
+	position: relative;
+}
+
+#group_code {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	font-size: 12px;
 }
 
 /*
@@ -445,7 +461,7 @@ Users
 */
 
 .users_subsection {
-	min-height: 70px;
+	min-height: 30px;
 }
 
 * html .users_subsection {

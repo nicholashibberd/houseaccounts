@@ -1,5 +1,5 @@
 <%= content_for :head do %>
-	<link rel="prerender" href="<%= new_member_payment_path(@member, :group_id => @member.group.id) %>">
+	<link rel="prerender" href="<%= new_member_payment_path(@member) %>">
 <% end %>
 
 <% if @member.errors.any? %>  
@@ -31,8 +31,7 @@
 	<h2><%= "#{@member.name.titleize}'s Summary" %></h2>
 	<div class="subsection">
 		<div class="subsection_buttons button confirm_button">
-			<%#= link_to 'New payment', new_member_payment_path(@member, :group_id => @member.group.id), :rel => 'facebox' %>
-			<%= link_to 'New payment', new_member_payment_path(@member, :group_id => @member.group.id) %>
+			<%= link_to 'New payment', new_member_payment_path(@member) %>
 		</div>
 	<% @member.other_members.each do |other_member| %>
 		<div class="member_summary">

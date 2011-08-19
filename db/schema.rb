@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20110818072454) do
 
   create_table "payments", :force => true do |t|
     t.string   "description"
-    t.decimal  "amount"
+    t.string   "amount"
     t.integer  "user_id"
     t.integer  "group_id"
     t.date     "date"

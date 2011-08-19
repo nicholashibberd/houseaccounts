@@ -1,7 +1,7 @@
 class ChangeDataTypeForPaymentAmount < ActiveRecord::Migration
   def self.up
     change_table :payments do |t|
-      t.change :amount, :big_decimal
+      t.change :amount, :string
     end
   end
 

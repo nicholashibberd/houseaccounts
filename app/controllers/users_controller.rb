@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   skip_before_filter :login_required, :except => [:edit, :show]
-  #layout 'signed_out', :only => :signin, :new
-  layout :choose_layout
   
   def new
     @user = User.new
@@ -49,12 +47,4 @@ class UsersController < ApplicationController
     redirect_to signin_path
   end
   
-  def choose_layout    
-    if [ 'signin', 'new' ].include? action_name
-      'signed_out'
-    else
-      'application'
-    end
-  end
-
 end
