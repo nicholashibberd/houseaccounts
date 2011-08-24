@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
   def balance_compared_to(member)
     spend_for_member(member) - member.spend_for_member(self)
   end
-
+  
   def generate_member_token(length=8)
     alphanumerics = ('a'..'z').to_a.concat(('A'..'Z').to_a.concat(('0'..'9').to_a))
     unless Member.find_by_member_token(alphanumerics)
@@ -36,7 +36,11 @@ class Member < ActiveRecord::Base
   end
   
   def liability_for_payment(payment)
-    payment.liable_members.include?(self) ? payment.spend_per_liable_member : nil
+    owes_for_payment?(payment) ? payment.spend_per_liable_member : nil
+  end
+  
+  def owes_for_payment?(payment)
+    payment.liable_members.include?(self)
   end
   
   def last_10_payments

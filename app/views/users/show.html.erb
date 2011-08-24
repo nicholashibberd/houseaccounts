@@ -13,7 +13,7 @@
 						<% member = group.get_member(@user) %>
 						<% member.other_members.each do |other_member| %>
 							<div class="member_summary">
-								<%= summary_for_current_user(member, other_member) %>
+								<%= summary_for_member(member, other_member) %>
 							</div>
 						<% end %>
 					<% end %>

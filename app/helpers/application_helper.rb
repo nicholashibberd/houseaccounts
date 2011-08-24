@@ -1,10 +1,10 @@
 module ApplicationHelper
   def display_balance(balance)
-    if balance.is_a?(BigDecimal)
-      amount = balance.to_f / 100
-      display_price(amount)
-    else
+    if balance.nil? 
       '--'
+    else
+      amount = balance.to_f / 100
+      display_price(amount)      
     end
   end
   

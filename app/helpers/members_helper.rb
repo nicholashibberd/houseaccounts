@@ -1,24 +1,16 @@
 module MembersHelper
   def summary_for_member(member, other_member)
-    balance = member.balance_compared_to(other_member)
-    if balance > 0
-      "is owed #{display_balance(balance)} by #{other_member.name}"
-    elsif balance < 0
-      "owes #{other_member.name} #{display_balance(balance.abs)}"
-    elsif balance == 0  
-      "is square with #{other_member.name}"
-    end
-  end
-
-  def summary_for_current_user(member, other_member)
     member.user ? member_is_current_user = (member.user.id == current_user.id) : nil
     balance = member.balance_compared_to(other_member)
     if balance > 0
-      member_is_current_user ? "#{other_member.name} owes me #{display_balance(balance)}" : "is owed #{display_balance(balance)} by #{other_member.name}"
+      summary = member_is_current_user ? "#{other_member.name} owes me #{display_balance(balance)}" : "is owed #{display_balance(balance)} by #{other_member.name}"
+      content_tag(:div, summary, :class => 'member_summary owed')
     elsif balance < 0
-      member_is_current_user ? "I owe #{other_member.name} #{display_balance(balance.abs)}" : "owes #{other_member.name} #{display_balance(balance.abs)}"
+      summary = member_is_current_user ? "I owe #{other_member.name} #{display_balance(balance.abs)}" : "owes #{other_member.name} #{display_balance(balance.abs)}"
+      content_tag(:div, summary, :class => 'member_summary owes')
     else
-      member_is_current_user ? "I am square with #{other_member.name}" : "is square with #{other_member.name}"
+      summary = member_is_current_user ? "I am square with #{other_member.name}" : "is square with #{other_member.name}"
+      content_tag(:div, summary, :class => 'member_summary square')
     end
   end
   
@@ -31,5 +23,5 @@ module MembersHelper
       content_tag(:div, nil, &block)
     end
   end
-  
+    
 end

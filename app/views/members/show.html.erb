@@ -34,9 +34,7 @@
 			<%= link_to 'New payment', new_member_payment_path(@member) %>
 		</div>
 	<% @member.other_members.each do |other_member| %>
-		<div class="member_summary">
-			<%= summary_for_member(@member, other_member) %>
-		</div>
+		<%= summary_for_member(@member, other_member) %>
 	<% end %>
 	</div>
 </div>
@@ -68,7 +66,8 @@
 						</div>
 					</td>
 					<% @member.group.members.each do |member| %>
-						<td class="liable_member"><%= display_balance(member.liability_for_payment(payment)) %></td>
+					<%# raise member.liability_for_payment(payment).inspect %>
+						<td class="liable_member <%= member.owes_for_payment?(payment) %>"><%= display_balance(member.liability_for_payment(payment)) %></td>
 					<% end %>
 					<td>
 					<%= link_to 'Edit', edit_member_payment_path(@member, payment) %>

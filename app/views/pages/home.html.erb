@@ -1,2 +1,42 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div id="post_it1" class="post_it">
+	<%= image_tag 'homepage/post_it1.png' %>
+</div>	
+	
+<div id="slideshow">
+	<div class="slideshow_item">
+		<div class="slideshow_image">
+			<%= image_tag 'homepage/last_10_payments.jpg' %>
+				<div class="slideshow_text" id="iou_text">
+					Keep track of your <span class="emphasis">IOUs</span> with our handy <span class="emphasis">online payment tracker</span>
+				</div>
+				<div class="slideshow_buttons">
+					<div class="slideshow_register_button confirm_button button">
+						<%= link_to 'Register', new_user_path %>
+					</div>
+					<div class="slideshow_signin_button blue_button button">
+						<%= link_to 'Sign in', signin_path %>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div id="homepage_bottom_content">
+	<div id="homepage_iphone">
+		<div id="homepage_iphone_image">
+		<%= image_tag 'homepage/iphone.jpg' %>	
+		</div>
+		<h2>Add new payments online or by mobile</h2>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat</p>
+		<div id="post_it2">
+			<%= image_tag 'homepage/post_it2.png' %>
+		</div>
+	</div>
+	
+	<div id="homepage_balance_summaries">
+		<h2>Instant balance summaries available on your homepage</h2>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat</p>
+		<div id="balance_summary_images">
+			<%= image_tag 'homepage/balance_summaries.gif' %>
+		</div>
+	</div>
+</div>
