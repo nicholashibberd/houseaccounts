@@ -7,7 +7,7 @@ class Member < ActiveRecord::Base
   
   validates_uniqueness_of :name, :case_sensitive => false, :scope => :group_id
   
-  before_save :generate_member_token
+  before_create :generate_member_token
   
   def other_members
     group.members.select {|member| member != self}

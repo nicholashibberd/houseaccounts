@@ -20,7 +20,8 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save      
+    if @user.save
+      @user.assign_member(params[:member_token]) if !params[:member_token].empty?
       set_user_cookie @user
       redirect_to @user
     else

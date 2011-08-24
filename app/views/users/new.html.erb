@@ -1,6 +1,7 @@
 <h1>Register</h1>
 <div>
 	<%= form_for @user do |f| %> 
+		<%= hidden_field_tag 'member_token', params[:member_token] %>
 	
 		<% if @user.errors.any? %>  
 	  	<div id="errorExplanation">  

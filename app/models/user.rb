@@ -31,6 +31,11 @@ class User < ActiveRecord::Base
     save(:validate => false)
   end
   
+  def assign_member(member_token)
+    member = Member.find_by_member_token(member_token)
+    member.update_attributes(:user_id => self.id)    
+  end
+  
   private
   
   def encrypt_password
@@ -50,7 +55,6 @@ class User < ActiveRecord::Base
   
   def secure_hash(string)
     Digest::SHA2.hexdigest(string)
-  end
-    
+  end    
   
 end

@@ -16,10 +16,11 @@ class MembersController < ApplicationController
   
   def create
     @member = Member.new(params[:member])
+    @existing_member = Member.find(params[:existing_member_id])
     if @member.save
       if email = params[:email]
         #check that the email is valid and send out the email
-        UserMailer.welcome_email(@member, email).deliver
+        UserMailer.welcome_email(@member, @existing_member, email).deliver
       end
       redirect_to member_path(@member)
     else

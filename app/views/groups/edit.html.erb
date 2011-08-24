@@ -20,6 +20,7 @@
 		</div>
 		<%= form_tag members_path(@group) do %>
 			<%= hidden_field_tag 'member[group_id]', @group.id %>
+			<%= hidden_field_tag 'existing_member_id', @group.get_member(current_user).id %>
 			<div class="field">
 				<div>
 				<%= label_tag :name %>

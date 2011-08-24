@@ -6,10 +6,10 @@
   <body>
     <h1>Welcome to example.com, <%= @member.name %></h1>
     <p>
-      You have successfully signed up to example.com<br/>
+      Your friend <%= @existing_member.name %>, has created a profile for you on house-accounts.com<br/> To login to the site, just follow this link: <%= @url %>.
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      Alternatively just create a new user account at www.house-accounts.com, and click the "Join group" button and enter the code "<%= @member.member_token %>" to sign up to this group
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

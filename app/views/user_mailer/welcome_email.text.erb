@@ -1,8 +1,10 @@
-Welcome to example.com, <%= @member.name %>
+Welcome to House Accounts, <%= @member.name %>
 ===============================================
  
-You have successfully signed up to example.com
+Your friend <%= @existing_member.name %>, has created a profile for you on house-accounts.com
  
 To login to the site, just follow this link: <%= @url %>.
+
+Alternatively just create a new user account at www.house-accounts.com, and click the "Join group" button and enter the code "<%= @member.member_token %>" to sign up to this group
  
 Thanks for joining and have a great day!
