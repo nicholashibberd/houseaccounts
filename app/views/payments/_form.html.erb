@@ -14,19 +14,19 @@
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<div class="field">
 		<div>
+			<%= f.label :description %>
+		</div>
+		<div>
+			<%= f.text_field :description %>
+		</div>
+	</div>
+	<div class="field">
+		<div>
 			<%= f.label :amount %>
 		</div>
 		<div id="amount_field">
 			<%= f.text_field :amount_parse, :value => display_price_for_form(@payment.amount) %>
 			<div id="pound_sign">&pound;</div>
-		</div>
-	</div>
-	<div class="field">
-		<div>
-			<%= f.label :description %>
-		</div>
-		<div>
-			<%= f.text_field :description %>
 		</div>
 	</div>
 	<div class="field">
