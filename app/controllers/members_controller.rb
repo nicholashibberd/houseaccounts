@@ -17,8 +17,9 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(params[:member])
     if @member.save
-      if params[:email]
+      if email = params[:email]
         #check that the email is valid and send out the email
+        UserMailer.welcome_email(@member, email).deliver
       end
       redirect_to member_path(@member)
     else
