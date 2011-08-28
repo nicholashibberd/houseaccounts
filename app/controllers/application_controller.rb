@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def check_user_access(instance)
     case instance
       when User then handle_user_access(instance == current_user)  
-      when Group then handle_user_access(@group.users.include?(current_user))
+      when Group then handle_user_access(instance.users.include?(current_user))
       when Member then handle_user_access(instance.group.users.include?(current_user))
     end
   end

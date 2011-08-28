@@ -45,10 +45,10 @@
 			<% @member.group.members.each do |member| %>
 				<div class="quick_payment_liable_member">
 					<div class="quick_payment_liable_member_input">
-						<%= check_box_tag "payment[liable_member_ids][]", member.id, @payment.liable_members.include?(member) %>
+						<%= check_box_tag "payment[liable_member_ids][]", member.id, @payment.liable_members.include?(member), :id => "liable_member_#{member.name.parameterize}" %>
 					</div>
 					<div class="quick_payment_liable_member_name">
-						<%= label_tag member.name %>
+						<%= label_tag "liable_member_#{member.name.parameterize}", member.name %>
 					</div>
 				</div>
 			<% end %>

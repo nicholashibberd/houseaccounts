@@ -1,6 +1,6 @@
 <div class="section">
-	<% user_groups(@user) do %>
-		<% @user.groups.each do |group| %>
+	<%= user_groups(@user) do %>
+		<%= @user.groups.each do |group| %>
 			<div class="group">
 				<h2><%= link_to group.name, group_path(group) %></h2>
 				<div class="subsection users_subsection">
@@ -9,7 +9,7 @@
 						<%= link_to 'New payment', new_member_payment_path(group.get_member(@user)) %>
 						</div>
 					</div>
-					<% user_group_summary(group) do %>
+					<%= user_group_summary(group) do %>
 						<% member = group.get_member(@user) %>
 						<% member.other_members.each do |other_member| %>
 							<div class="member_summary">

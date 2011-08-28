@@ -33,9 +33,20 @@ class MembersController < ApplicationController
     if member.overall_balance == 0
       member.destroy
     else
-      flash[:error] = "#{member.name.titleize} still has a unsettled balance!"
+      flash[:error] = "#{member.name.titleize} still has an unsettled balance!"
     end
     redirect_to group_path(member.group)
+  end
+  
+  def send_email
+    group = Group.find(params[:group_id])
+    existing_member = group.get_member(current_user)
+    member = Member.find(params[:member_id])
+    email = params[:email]
+    UserMailer.welcome_email(member, existing_member, email).deliver
+    
+    flash[:success] = "A welcome email has been sent to #{member.name.titleize}!"
+    redirect_to edit_group_path(group)
   end
 
 end

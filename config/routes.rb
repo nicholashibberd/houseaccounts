@@ -8,6 +8,9 @@ Houseaccounts::Application.routes.draw do
   end
   resources :members do
     resources :payments
+    member do
+      post :send_email
+    end
   end
   resources :users do 
     collection do 

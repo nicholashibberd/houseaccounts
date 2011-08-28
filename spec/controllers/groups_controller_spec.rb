@@ -20,6 +20,20 @@ describe GroupsController do
       get 'edit', :id => @group.id
       response.should be_success
     end
+    
+    it "should allow access to the join page" do
+      user = Factory(:user)
+      User.should_receive(:find).and_return(user)
+      get 'join'
+      response.should be_success
+    end
+
+    it "should allow access to the add page" do
+      user = Factory(:user)
+      User.should_receive(:find).and_return(user)
+      get 'add'
+      response.should be_success
+    end
   end
 
   describe "disallow non-permitted users access" do   
@@ -66,5 +80,4 @@ describe GroupsController do
     end
   end
   
-
 end

@@ -16,22 +16,6 @@ module GroupsHelper
     end
   end
   
-  def member_group_top_nav_link(member)
-    if request[:controller] == 'members' && params[:id].to_i == member.id
-      link_to member.name.titleize, member_path(member), :class => 'selected'
-    else
-      link_to member.name.titleize, member_path(member)
-    end
-  end
-
-  def overview_group_top_nav_link(group)
-    if request[:controller] == 'groups'
-      link_to 'Overview', group_path(group), :class => 'selected'
-    else
-      link_to 'Overview', group_path(group)
-    end
-  end
-  
   def group_members(group, &block)
     if group.members.size == 1
       content_tag(:div, "You are the only member in this group", :class => 'subsection')

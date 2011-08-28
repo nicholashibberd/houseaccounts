@@ -40,8 +40,11 @@
 </div>
 
 
-<% last_10_payments(@member) do %>
+<%= last_10_payments(@member) do %>
 <div class="section" id="member_last_10_payments">
+	<div id='all_payments_link'>
+		<%= link_to 'Show all payments', member_path(@member, :all_payments => true)%>
+	</div>
 	<h2>Last 10 payments</h2>
 	<div class="subsection">
 		<table>
@@ -54,7 +57,7 @@
 				<th></th>
 			</tr>
 			
-			<% @member.last_10_payments.each do |payment| %>
+			<% @collection.each do |payment| %>
 				<tr>
 					<td class="payment_amount"><%= display_balance(payment.amount) %></td>
 					<td  class="payment_description">
@@ -66,12 +69,10 @@
 						</div>
 					</td>
 					<% @member.group.members.each do |member| %>
-					<%# raise member.liability_for_payment(payment).inspect %>
 						<td class="liable_member <%= member.owes_for_payment?(payment) %>"><%= display_balance(member.liability_for_payment(payment)) %></td>
 					<% end %>
 					<td>
 					<%= link_to 'Edit', edit_member_payment_path(@member, payment) %>
-					<%#= link_to 'Edit', edit_member_payment_path(@member, payment), :rel => 'facebox' %>
 						</td>
 				</tr>
 			<% end %>

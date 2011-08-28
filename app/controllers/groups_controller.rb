@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     check_user_access(@group)
   end
 
-  def show   
+  def show
     @group = Group.find(params[:id])
     check_user_access(@group)
   end
@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
   end
   
   def join_new_group
-    group = Group.find_by_group_token(params[:group_token])
+    group = Group.find_by_group_token(params[:group_token])    
     group.add_member(params[:member_name], current_user.id)
     redirect_to group_path(group)
   end

@@ -37,7 +37,7 @@ describe UsersController do
       @user.should_receive(:save).and_return(false)
     end
     
-    it "should render the 'new' page" do
+    it "should redirect to the 'new' page" do
       post :create, :user => @attr
       response.should render_template('new')
     end
@@ -53,7 +53,7 @@ describe UsersController do
     end
     
     it "should redirect to the user show page" do
-      post :create, :user => @attr
+      post :create, :user => @attr, :member_token => ""
       response.should redirect_to(user_path(@user))
     end
   end

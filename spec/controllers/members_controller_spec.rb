@@ -49,6 +49,8 @@ describe MembersController do
     before(:each) do
       @group = mock_model(Group)
       @member = Factory(:member, :group_id => @group.id)
+      @member2 = Factory(:member)
+      Member.stub!(:find).and_return(@member2)
       Member.stub!(:new).and_return(@member)
       controller.stub!(:signed_in?).and_return(true)
     end
@@ -56,7 +58,7 @@ describe MembersController do
     it "should redirect to the new group when created" do
       @member.should_receive(:save).and_return(true)
       @member.stub!(:group).and_return(@group)
-      post :create, :id => @member.id, :group_id => @group.id
+      post :create, :id => @member.id, :group_id => @group.id, :email => 'test@test.com'
       response.should redirect_to(member_path(@member))
     end
     
@@ -69,6 +71,28 @@ describe MembersController do
     end
   end
   
-  
+  describe "deleting a member" do
+    before(:each) do
+      @group = mock_model(Group)
+      @member = Factory(:member, :group_id => @group.id, :name => 'Member1')
+      @member2 = Factory(:member, :group_id => @group.id, :name => 'Member2')
+      @member.stub!(:group).and_return(@group)
+      @group.stub!(:members).and_return([@member, @member2])
+      Member.stub!(:find).and_return(@member)
+      controller.stub!(:signed_in?).and_return(true)
+    end
+    
+    it "should not delete if the member has an outstanding balance" do
+      @member.stub!(:overall_balance).and_return(1000)
+      delete :destroy, :id => @member.id
+      flash[:error].should == "#{@member.name} still has an unsettled balance!"
+    end
 
+    it "should delete the member if their balance is settled" do
+      @member.stub!(:overall_balance).and_return(0)
+      delete :destroy, :id => @member.id
+      response.should redirect_to group_path(@group)
+    end
+  end
+  
 end

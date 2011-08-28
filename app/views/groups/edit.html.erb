@@ -7,6 +7,26 @@
 			</div>
 			<div>
 			<%= member.name.titleize %>
+			<%= member_email_link(member) do %>
+				<div class='member_email_link'>
+					<%= link_to "Send email invitation to #{member.name.titleize}", nil, :id => "member_email_link_#{member.id}" %>
+				</div>
+				<div class="member_email_form" id="member_email_link_<%= member.id %>_form">
+					<%= form_tag send_email_member_path(member) do %>
+						<%= hidden_field_tag :group_id, params[:id] %>
+						<%= hidden_field_tag :member_id, member.id %>
+						<div>
+							<%= label_tag 'email_address' %>
+						</div>
+						<div>
+							<%= text_field_tag 'email_address' %>
+						</div>
+						<div>
+							<%= submit_tag 'Send email', :class => 'confirm_button member_email_submit_button' %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 			</div>
 		</div>
 	<% end %>

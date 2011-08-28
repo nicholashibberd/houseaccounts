@@ -33,8 +33,4 @@ class Group < ActiveRecord::Base
     Member.create(:name => member_name, :group_id => id, :user_id => user_id)
   end
   
-  def remove_member(member)
-    raise member.payments.inspect
-  end
-  
 end

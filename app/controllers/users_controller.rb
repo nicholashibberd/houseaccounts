@@ -28,7 +28,8 @@ class UsersController < ApplicationController
       @user.errors.each do |error, message|
         flash_display(error, message)
       end
-      redirect_to new_user_path
+      #redirect_to new_user_path
+      render 'new'
     end
   end
   

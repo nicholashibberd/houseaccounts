@@ -9,5 +9,12 @@ jQuery(document).ready(function($) {
 	$('#group_dropdown').click(function() {
 	  $('#group_dropdown_hidden').slideToggle( 200 );
 	});
+	
+	$('.member_email_form').hide();
+	$('.member_email_link a').click(function() {
+		var member = $(this).attr('id');
+	  $('#' + member + '_form').slideToggle( 200 );
+		return false;
+	});
 
 })

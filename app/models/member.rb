@@ -44,6 +44,10 @@ class Member < ActiveRecord::Base
   end
   
   def last_10_payments
+    payments.order('created_at DESC').first(10)
+  end
+  
+  def all_payments
     payments.order('created_at DESC')
   end
   

@@ -3,9 +3,8 @@ class UserMailer < ActionMailer::Base
   
   def welcome_email(member, existing_member, email)
     @member = member
-    @url  = "http://www.house-accounts.com/?member_token=#{member.member_token}"
+    @url  = "http://www.house-accounts.com/register/?member_token=#{member.member_token}"
     @existing_member = existing_member
-    
     mail(:to => email, :subject => "Welcome to House Accounts")
   end
 end

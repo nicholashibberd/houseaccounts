@@ -12,7 +12,7 @@
 	</div>
 </div>
 
-<% group_members(@group) do %>
+<%= group_members(@group) do %>
 	<% @group.members.each do |member| %>
 		<div class="member_section">
 			<h2><%= link_to member.name.titleize, member_path(member) %></h2>

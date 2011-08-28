@@ -20,6 +20,15 @@ module MembersHelper
     if member.payments.empty?
       content_tag(:div, statement, :class => 'subsection')
     else
+      @collection =  params[:all_payments] ? member.all_payments : member.last_10_payments
+      content_tag(:div, nil, &block)
+    end
+  end
+  
+  def member_email_link(member, &block)
+    if member.user
+      return
+    else
       content_tag(:div, nil, &block)
     end
   end
