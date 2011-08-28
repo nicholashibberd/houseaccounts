@@ -32,5 +32,11 @@ module MembersHelper
       content_tag(:div, nil, &block)
     end
   end
+  
+  def all_payments_link(member, &block)
+    if member.payments.size > 10
+      content_tag(:div, nil, &block)
+    end
+  end
     
 end

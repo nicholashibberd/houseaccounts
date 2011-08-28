@@ -42,9 +42,11 @@
 
 <%= last_10_payments(@member) do %>
 <div class="section" id="member_last_10_payments">
-	<div id='all_payments_link'>
-		<%= link_to 'Show all payments', member_path(@member, :all_payments => true)%>
-	</div>
+	<%= all_payments_link(@member) do %>
+		<div id='all_payments_link'>
+			<%= link_to 'Show all payments', member_path(@member, :all_payments => true)%>
+		</div>
+	<% end %>
 	<h2>Last 10 payments</h2>
 	<div class="subsection">
 		<table>

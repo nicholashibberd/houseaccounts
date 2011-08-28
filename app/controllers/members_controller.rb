@@ -42,7 +42,7 @@ class MembersController < ApplicationController
     group = Group.find(params[:group_id])
     existing_member = group.get_member(current_user)
     member = Member.find(params[:member_id])
-    email = params[:email]
+    email = params[:email_address]
     UserMailer.welcome_email(member, existing_member, email).deliver
     
     flash[:success] = "A welcome email has been sent to #{member.name.titleize}!"
