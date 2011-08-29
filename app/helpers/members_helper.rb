@@ -38,5 +38,9 @@ module MembersHelper
       content_tag(:div, nil, &block)
     end
   end
+  
+  def email_valid?(email)
+    email =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  end
     
 end

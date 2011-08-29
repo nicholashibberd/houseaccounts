@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  include MembersHelper
   def new
   end
 
@@ -18,9 +19,8 @@ class MembersController < ApplicationController
     @member = Member.new(params[:member])
     @existing_member = Member.find(params[:existing_member_id])
     if @member.save
-      if email = params[:email]
-        #check that the email is valid and send out the email
-        UserMailer.welcome_email(@member, @existing_member, email).deliver
+      if email_valid?(params[:email])
+        UserMailer.welcome_email(@member, @existing_member, params[:email]).deliver
       end
       redirect_to member_path(@member)
     else
@@ -43,10 +43,11 @@ class MembersController < ApplicationController
     existing_member = group.get_member(current_user)
     member = Member.find(params[:member_id])
     email = params[:email_address]
-    if UserMailer.welcome_email(member, existing_member, email).deliver
+    if email_valid?(params[:email_address])
+      UserMailer.welcome_email(member, existing_member, email).deliver
       flash[:success] = "A welcome email has been sent to #{member.name.titleize}!"
     else
-      flash[:error] = "There was an error. The email has not been sent"
+      flash[:error] = "The email address has not been recognised"
     end
     redirect_to edit_group_path(group)
   end
