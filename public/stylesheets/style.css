@@ -216,8 +216,12 @@ input[type=submit] {
 
 #new_user_signup {
 	position: absolute;
-	bottom: 37px;
+	bottom: 68px;
 	left: 130px;
+}
+
+#forgotten_password_link {
+	margin-top: 10px;
 }
 
 #edit_payment_form {
