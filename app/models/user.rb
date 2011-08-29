@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates_length_of	:password, :within => 6..40, :on => :create
   
   before_save :encrypt_password
+  before_create :generate_user_token
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -34,6 +35,15 @@ class User < ActiveRecord::Base
   def assign_member(member_token)
     member = Member.find_by_member_token(member_token)
     member.update_attributes(:user_id => self.id)    
+  end
+  
+  def generate_user_token(length=8)
+    alphanumerics = ('a'..'z').to_a.concat(('A'..'Z').to_a.concat(('0'..'9').to_a))
+    unless User.find_by_user_token(alphanumerics)
+      self.user_token = alphanumerics.sort_by{rand}.to_s[0..length]
+    else
+      generate_user_token
+    end
   end
   
   private

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :login_required, :except => [:edit, :show]
+  include ApplicationHelper
   
   def new
     @user = User.new
@@ -41,6 +42,26 @@ class UsersController < ApplicationController
     else
       set_user_cookie user
       redirect_to user
+    end
+  end
+  
+  def send_password_update_link
+    user = User.find_by_email(params[:user][:email])
+    if user
+      UserMailer.forgotten_password_email(user).deliver
+    else
+      flash[:error] = "We couldn't find a user with that email address"
+    end
+  end
+  
+  def handle_password_reset
+    user = User.find_by_user_token(params[:user][:user_token])
+    if user.update_attributes(:password => params[:user][:password])
+      flash[:success] = 'Your password has been updated'
+      redirect_to user_path(user)
+    else
+      flash[:error] = 'There was an error. Your password has not been updated'
+      redirect_to password_reset_path
     end
   end
   

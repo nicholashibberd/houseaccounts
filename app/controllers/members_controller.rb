@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  include MembersHelper
+  include ApplicationHelper
   def new
   end
 

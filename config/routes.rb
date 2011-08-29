@@ -14,10 +14,12 @@ Houseaccounts::Application.routes.draw do
   end
   resources :users do 
     collection do 
-      post :validate
+      post :validate, :send_password_update_link, :handle_password_reset
     end
   end
   
+  match 'forgotten_password' => 'users#forgotten_password', :as => :forgotten_password
+  match 'password_reset' => 'users#password_reset', :as => :password_reset
   match 'signin' => 'users#signin', :as => :signin
   match 'register' => 'users#new', :as => :register
   match '/signout' => 'users#signout', :as => :signout

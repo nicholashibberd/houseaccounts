@@ -7,4 +7,10 @@ class UserMailer < ActionMailer::Base
     @existing_member = existing_member
     mail(:to => email, :subject => "Welcome to House Accounts")
   end
+  
+  def forgotten_password_email(user)
+    @user = user
+    @url = "http://www.house-accounts.com/password_reset/?user_token=#{user.user_token}"
+    mail(:to => user.email, :subject => "House Accounts - Forgotten Password")
+  end
 end
