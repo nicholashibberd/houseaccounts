@@ -17,7 +17,7 @@ describe "Payments" do
   it "should correctly save the payment" do
     fill_in "payment_amount_parse", :with => 999
     fill_in "description", :with => 'Test description'
-    check "payment_liable_member_ids_"
+    check "liable_member_#{@member.name.parameterize}"
     click_button
     response.should_not have_selector('#flash')
   end
@@ -25,7 +25,7 @@ describe "Payments" do
   it "should correctly save the payment when the amount has a decimal point" do
     fill_in "payment_amount_parse", :with => 9.99
     fill_in "description", :with => 'Test description'
-    check "payment_liable_member_ids_"
+    check "liable_member_#{@member.name.parameterize}"
     click_button
     response.should be_success
   end

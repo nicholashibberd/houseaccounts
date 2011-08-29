@@ -54,5 +54,5 @@ describe MembersHelper do
       helper.summary_for_member(@member, @other_member).should eql('<div class="member_summary square">I am square with Nick</div>')
     end    
   end
-  
+    
 end

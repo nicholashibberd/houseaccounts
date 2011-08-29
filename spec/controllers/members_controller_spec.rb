@@ -95,4 +95,23 @@ describe MembersController do
     end
   end
   
+  describe "send email to new user" do
+    before(:each) do
+      @group = mock_model(Group)
+      Group.stub!(:find).and_return(@group)
+      @user = Factory(:user)      
+      @group.stub!(:get_member).and_return(@user)
+      @member = Factory(:member, :group_id => @group.id, :name => 'Member1', :user_id => @user.id)
+      @member2 = Factory(:member, :group_id => @group.id, :name => 'Member2')
+      Member.stub!(:find).and_return(@member)
+      controller.stub!(:signed_in?).and_return(true)
+      controller.stub!(:current_user).and_return(@user)
+    end
+    
+    it "should correctly send the email" do
+      #post send_email_member_path(@member), :group_id => @group.id, :member_id => @member2.id, :email_address => 'nicholashibberd@hotmail.com'
+      post :send_email, :id => @member.id, :group_id => @group.id, :email_address => 'nicholashibberd@hotmail.com'
+    end
+  end
+  
 end

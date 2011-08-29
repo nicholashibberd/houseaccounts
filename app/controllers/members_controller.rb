@@ -43,9 +43,11 @@ class MembersController < ApplicationController
     existing_member = group.get_member(current_user)
     member = Member.find(params[:member_id])
     email = params[:email_address]
-    UserMailer.welcome_email(member, existing_member, email).deliver
-    
-    flash[:success] = "A welcome email has been sent to #{member.name.titleize}!"
+    if UserMailer.welcome_email(member, existing_member, email).deliver
+      flash[:success] = "A welcome email has been sent to #{member.name.titleize}!"
+    else
+      flash[:error] = "There was an error. The email has not been sent"
+    end
     redirect_to edit_group_path(group)
   end
 
